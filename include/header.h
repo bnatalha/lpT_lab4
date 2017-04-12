@@ -5,10 +5,12 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <cstdlib>  //for exit();
 
 using std::cout;
 using std::cin;
 using std::endl;
+using std::cerr;
 using std::string;
 using std::stringstream;
 using std::getline;

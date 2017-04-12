@@ -2,24 +2,29 @@
 #define STATS_H
 
 #include "header.h"
+#include "mystoi.h"
+
+//Stats stats.h (???)
+
 /**
-* @struct  Stats stats.h ??
+* @struct  Stats stats.h
 * @brief   Tipo de estrutura que agrega dados de nascimento de um município
 * @details Os dados cobrem os anos 1994 a 2014
 */
 struct Stats{
-	string codigo;		/**< Código do município */
-	string nome;		/**< Nome do município */
+	string codigo;		 /**< Código do município */
+	string nome;		 /**< Nome do município */
 	int nascimentos[21]; /**< Número de nascimentos em cada ano contabilizado */
 	int total;
 };
 
-//===============leitura de dados ===================
-void allocState(Stats **estado, int &qtd_muni, char const *source );
-void fillState(Stats *estado, int &qtd_muni, char const *source );
+//===============leitura e alocação de dados ========================
 
-//===Operações com stats
+void allocStats( Stats **estado, int &qtd_muni, char const *source );
+void fillStats ( Stats  *estado, int &qtd_muni, char const *source );
 
-void printStats( Stats const &municipio );	// Imprime o conteudo de uma Stat.
+//===============prints =============================================
+
+void printStats( Stats const &municipio );
 
 #endif

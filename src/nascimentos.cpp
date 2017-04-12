@@ -27,15 +27,16 @@ int main(int argc, char const *argv[])
 	//exceções de leitura.
 
 	//leitura de dados
-	allocState(&rio_norte, mySize, argv[1] );
-	fillState(rio_norte, mySize, argv[1] );
+	allocStats(&rio_norte, mySize, argv[1] );
+	fillStats(rio_norte, mySize, argv[1] );
 
 	int op = 1;
 	int index;
 
 	cout << ">> op: ";
+	cin >> op ;
 	while (op != 0){
-		cout << ">> Indice de 0 a" << mySize << ": ";
+		cout << ">> Indice de 0 a" << mySize-1 << ": "; //ultimo indice
 		cin >> index;
 		cout << ">> [ ";
 		printStats(rio_norte[index]);

@@ -1,7 +1,6 @@
 ##by @bnatalha
-# "apenas um programa executável deverá ser gerado e entregue após a conclusão das tarefas"
+
 CPPFLAGS += -Wall -std=c++11 -ansi -pedantic -O0 -g
-#CPPFLAGS += -Wall -std=c++11 -g
 INC =-I include
 
 .PHONY: all val clean
@@ -20,7 +19,7 @@ val:
 #
 #
 #gerar executaveis
-bin/nascimentos: bin/nascimentos.o bin/stats.o
+bin/nascimentos: bin/nascimentos.o bin/stats.o bin/mystoi.o
 	g++ $^ -o $@
 
 #gerar objetos
@@ -28,6 +27,9 @@ bin/nascimentos.o: src/nascimentos.cpp
 	g++ $(CPPFLAGS) $< $(INC) -c -o $@
 
 bin/stats.o: src/stats.cpp
+	g++ $(CPPFLAGS) $< $(INC) -c -o $@
+
+bin/mystoi.o: src/mystoi.cpp
 	g++ $(CPPFLAGS) $< $(INC) -c -o $@
 
 #remover .o's
