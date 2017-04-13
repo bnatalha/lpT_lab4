@@ -6,6 +6,7 @@
 #include <fstream>
 #include <sstream>
 #include <cstdlib>  //for exit();
+#include <iomanip>	//for setprecision()
 
 using std::cout;
 using std::cin;

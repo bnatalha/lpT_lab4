@@ -17,15 +17,17 @@ struct Stats{
 	int nascimentos[21]; /**< Número de nascimentos em cada ano contabilizado */
 };
 
-//===============leitura e alocação de dados ========================
+void allocStats( 
+	Stats **estado, 
+	int &qtd_muni, 
+	char const *source );
 
-void allocStats( Stats **estado, int &qtd_muni, char const *source );
-void fillStats ( Stats  *estado, int &qtd_muni, char const *source );
+void fillStats ( 
+	Stats *estado, 
+	int &qtd_muni, 
+	char const *source );
 
-//===============gravação/impressão de dados =============================================
-
-void printStats( Stats const &municipio );
-
-//void saveStats
+void printStats( 
+	Stats const &municipio );
 
 #endif

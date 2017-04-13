@@ -23,6 +23,7 @@ int main(int argc, char const *argv[])
 
 	Stats *rn = NULL;
 	int rn_cities_t = 0;
+	string cidade;
 
 	// Alocar o array de Stats
 	allocStats(&rn, rn_cities_t, argv[1] );
@@ -53,13 +54,21 @@ int main(int argc, char const *argv[])
 		cout << endl;
 	}
 */
-	cout << "Salvando estatísticas anuais em 'data/estatisticas.csv'..." << endl;
 	saveYearStats(myYearsStats, "data/estatisticas.csv");
+	cout << "... Arquivo estatisticas.csv gerado em 'data/'" << endl;
 
-	cout << "Salvando totais em 'data/totais.dat'..." << endl;
 	saveYearStats(myYearsStats, "data/totais.dat");
-	
-	cout << "Deletando arrays alocados dinâmicamente..." << endl;
+	cout << "... Arquivo totais.dat gerado em 'data/'" << endl << endl;
+
+	cout << "Municipio com maior taxa de queda 2013-2014: ";		
+	double menor = growth_rate( rn, rn_cities_t, 2013, 2014, Menor, cidade);
+	cout << cidade << " (" << std::setprecision(4) << menor << "%)" << endl;
+
+	cout << "Municipio com maior taxa de crescimento 2013-2014: ";		
+	double maior = growth_rate( rn, rn_cities_t, 2013, 2014, Maior, cidade);
+	cout << cidade << " (+" << std::setprecision(4) << maior << "%)" << endl;
+
+	// Deleta arrays alocados dinâmicamente
 	delete[] myYearsStats;
 	delete[] rn;
 

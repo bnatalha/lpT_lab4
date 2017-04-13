@@ -73,25 +73,21 @@ void fillStats(Stats *estado, int &qtd_muni, char const *source )
 		
 
 		for ( int i = 0; i < qtd_muni; i++ ) {	// dá 2º linha até a penultima.
-			
-			//inData.ignore('"');
 
 			// Armazena codigo da cidade
 			inData.ignore(1);
 			getline(inData, fromData, ' ');
 			estado[i].codigo = fromData;
 			
-			//inData.ignore(1, '"');
 			// Armazena nome da cidade
 			getline(inData, fromData, '\"');
 			estado[i].nome = fromData;
 
-			//inData.ignore(';');
 			// Armazena nascimentos da cidade
 			inData.ignore(1);
 			for (int j = 0; j < 21; ++j){
 				getline(inData, fromData, ';');
-				estado[i].nascimentos[j] = myStoi(fromData);
+				estado[i].nascimentos[j] = myStoi<int>(fromData);
 			}
 
 			// Descarta ultima coluna relativa ao total de nascimentos no perido 

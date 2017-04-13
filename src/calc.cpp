@@ -3,23 +3,23 @@
 #include <cmath>
 
 int year_peaks( 
-	const Stats 		*vStats, 
-	const int   		&vSize, 
-	const int   		&year_pos, 
-	const operations_t  &param )
+	const Stats *vStats, 
+	const int &vSize, 
+	const int &year_pos, 
+	const operations_t &param )
 {
-	long int thisAmount = vStats[0].nascimentos[year_pos];
+	long int peakAmount = vStats[0].nascimentos[year_pos];
 
 	for (int i = 0; i < vSize; ++i)
-		if( myCompare( static_cast<long int>(vStats[i].nascimentos[year_pos]), thisAmount ) == param )
-			thisAmount = vStats[i].nascimentos[year_pos];
-	return thisAmount;
+		if( myCompare( static_cast<long int>(vStats[i].nascimentos[year_pos]), peakAmount ) == param )
+			peakAmount = vStats[i].nascimentos[year_pos];
+	return peakAmount;
 }
 
 int sum_states( 
 	const Stats *vStats, 
-	const int   &vSize, 
-	const int   &year_pos )
+	const int &vSize, 
+	const int &year_pos )
 {
 	int sum = 0;
 
@@ -30,10 +30,10 @@ int sum_states(
 }
 
 double desvp_states( 
-	const Stats 	*vStats, 
-	const int 		&vSize, 
-	const int 		&year_pos, 
-	const double	&media_states )
+	const Stats *vStats, 
+	const int &vSize, 
+	const int &year_pos, 
+	const double &media_states )
 {
 
 	double sum = 0;
@@ -42,4 +42,44 @@ double desvp_states(
 		sum += pow( vStats[i].nascimentos[year_pos] - media_states, 2);
 
 	return sqrt( sum / vSize );
+}
+
+
+double growth_rate( 
+	const Stats *vStats, 
+	const int &vSize, 
+	const int &begin_year,
+	const int &end_year,
+	const operations_t &param,
+	string &municipio )
+{
+	double peakRate =
+		static_cast<double>( vStats[0].nascimentos[end_year-1994] )	/
+		vStats[0].nascimentos[begin_year-1994];
+
+	double muniGrowthRate;
+
+	string muni_name = vStats[0].nome;
+	
+	for (int muni = 0; muni < vSize; ++muni)
+	{
+		/*for (int ano = begin_year; ano <= end_year; ++ano)
+		{
+			growthRate += vStats[muni].nascimentos[ano-1994];
+		}*/
+
+		muniGrowthRate = 
+			static_cast<double>( vStats[muni].nascimentos[end_year-1994] ) 	/
+			vStats[muni].nascimentos[begin_year-1994];
+
+		if( myCompare( muniGrowthRate, peakRate ) == param )
+		{
+			peakRate = muniGrowthRate;
+			muni_name = vStats[muni].nome;
+		}
+	}
+	
+	municipio = muni_name;
+	
+	return (100.00 * (peakRate - 1) );
 }
