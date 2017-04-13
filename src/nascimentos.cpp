@@ -1,6 +1,6 @@
 /**
  * @file	nascimentos.cpp
- * @brief	onde fica a função main.
+ * @brief	Onde fica a função main.
  * @author  Natália Azevedo de Brito (https://github.com/bnatalha)
  * @since	10/04/2017
  * @date	--/04/2017
@@ -9,6 +9,7 @@
 
 #include "stats.h"
 #include "calc.h"
+#include "yearstats.h"
 
 /**
 * @brief  Função main
@@ -37,49 +38,42 @@ int main(int argc, char const *argv[])
 	--
 	*/
 
-	
-	Stats *rio_norte = NULL;
-	int mySize = 0;
+	Stats *rn = NULL;
+	int rn_cities_t = 0;
 
-	//exceções de leitura.
+	// Alocar o array de Stats
+	allocStats(&rn, rn_cities_t, argv[1] );
 
-	//leitura de dados
-	allocStats(&rio_norte, mySize, argv[1] );
-	fillStats(rio_norte, mySize, argv[1] );
-/*
-	int op = 1;
-	int index;
+	// Preencher o array de Stats
+	fillStats(rn, rn_cities_t, argv[1] );
 
-	while (op == 1){
-		cout << ">> Indice de 0 a" << mySize-1 << ": "; //ultimo indice
-		cin >> index;
-		cout << ">> ";
-		printStats(rio_norte[index]);
-		cout << "--" << endl;
+	// Alocar o array de YearStats
+	YearStats *myYearsStats = new YearStats[21];
+
+	// Preencher o array de YearStats
+	for (int i = 0; i < 21; ++i)
+	{
+		myYearsStats[i].ano = i+1994;
+		myYearsStats[i].total_n = sum_states( rn, rn_cities_t, i );
+		myYearsStats[i].media_n = 
+			static_cast<double>( myYearsStats[i].total_n ) / rn_cities_t;
+		myYearsStats[i].desvp_n = desvp_states( rn, rn_cities_t, i, myYearsStats[i].media_n );
+		myYearsStats[i].maior_n = year_peaks( rn, rn_cities_t, i, Maior);
+		myYearsStats[i].menor_n = year_peaks( rn, rn_cities_t, i, Menor);
 	}
-*/
 
-	cout << "(i) O maior número de nascimentos em cada ano:" << endl;
-	getBornPeaks(rio_norte,mySize,Maior);
-	cout << endl;
-
-	cout << "(ii) O menor número de nascimentos em cada ano:" << endl;
-	getBornPeaks(rio_norte,mySize,Menor);
-	cout << endl;
-
-	cout << "(iii) A média do número de nascimentos em cada ano:" << endl;
-	getTotal(rio_norte,mySize,Media);
-	cout << endl;
-
-	cout << "(iv) O desvio padrão2 do número de nascimentos em cada ano:" << endl;
-	getTotal(rio_norte,mySize,DesvP);
-	cout << endl;
-
-	cout << "(v) O número total de nascimentos em cada ano:" << endl;
-	getTotal(rio_norte,mySize,Soma);
-	cout << endl;
+	// Imprimi valores das estatiscas dos anos no terminal
+	cout << "Ano  |     total|     media|     desvp|     maior|     menor|" << endl;
+	for (int i = 0; i < 21; ++i)
+	{
+		printYearStats(myYearsStats[i]);
+		cout << endl;
+	}
 	
-	delete[] rio_norte;
+	// Desaloca arrays dinâmicos
+	delete[] myYearsStats;
+	delete[] rn;
 
+	cout << "Encerrando programa..." << endl;
 	return 0;
 }

@@ -13,12 +13,22 @@ enum operations_t {
 	Media =  3
 };
 
-int sum_states( const Stats &state );
-double desvp_states( const Stats *vStats, const int &vSize );
+int year_peaks( 
+	const Stats 		*vStats, 
+	const int   		&vSize, 
+	const int   		&year_pos, 
+	const operations_t  &param );
 
-void getBornPeaks( const Stats *vStats, const int &vSize, const operations_t &param);
-void getTotal( const Stats *vStats, const int &vSize, const operations_t &param );
+int sum_states( 
+	const Stats *vStats, 
+	const int   &vSize, 
+	const int   &year_pos );
 
+double desvp_states( 
+	const Stats 	*vStats, 
+	const int 		&vSize, 
+	const int 		&year_pos, 
+	const double	&media_states );
 
 
 #endif

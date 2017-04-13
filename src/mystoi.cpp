@@ -11,7 +11,8 @@
 /**
 * @brief   Função myStoi
 * @detail  Similar a std::stoi encontrada na libraria de C, converte
-* 		   's' interpretando seu conteudo como um número inteiro, retornando um valor int
+* 		   's' interpretando seu conteudo como um número inteiro, retornando um valor int.
+		   (std::stoi não estava sendo reconhecide por algum motivo(será que é por causa do -pedantic?))
 * @param &s referência a string s.
 */
 int myStoi (string &s)

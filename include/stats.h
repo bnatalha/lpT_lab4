@@ -23,8 +23,10 @@ struct Stats{
 void allocStats( Stats **estado, int &qtd_muni, char const *source );
 void fillStats ( Stats  *estado, int &qtd_muni, char const *source );
 
-//===============prints =============================================
+//===============gravação/impressão de dados =============================================
 
 void printStats( Stats const &municipio );
+
+//void saveStats
 
 #endif
