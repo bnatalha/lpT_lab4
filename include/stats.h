@@ -15,7 +15,6 @@ struct Stats{
 	string codigo;		 /**< Código do município */
 	string nome;		 /**< Nome do município */
 	int nascimentos[21]; /**< Número de nascimentos em cada ano contabilizado */
-	int total;
 };
 
 //===============leitura e alocação de dados ========================

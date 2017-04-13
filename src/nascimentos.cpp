@@ -20,23 +20,6 @@
 */
 int main(int argc, char const *argv[])
 {
-	/*
-	recebe via linha de comando .csv
-	aloca coisas no vetor de stats
-	--
-	calcular 
-	(i) o maior número de nascimentos em cada ano;
-	(ii) o menor número de nascimentos em cada ano;
-	(iii) a média do número de nascimentos em cada ano;
-	(iv) o desvio padrão2 do número de nascimentos em cada ano, e;
-	(v) o número total de nascimentos em cada ano.
-	--
-	saida
-	estatisticas.csv
-	totais.dat
-	histograma.gnuplot
-	--
-	*/
 
 	Stats *rn = NULL;
 	int rn_cities_t = 0;
@@ -70,13 +53,13 @@ int main(int argc, char const *argv[])
 		cout << endl;
 	}
 */
-	// Salva valores de YearStats em 'data/estatisticas.csv'
+	cout << "Salvando estatísticas anuais em 'data/estatisticas.csv'..." << endl;
 	saveYearStats(myYearsStats, "data/estatisticas.csv");
 
-	// Salva valores de YearStats em 'data/totais.dat'
+	cout << "Salvando totais em 'data/totais.dat'..." << endl;
 	saveYearStats(myYearsStats, "data/totais.dat");
 	
-	// Desaloca arrays dinâmicos
+	cout << "Deletando arrays alocados dinâmicamente..." << endl;
 	delete[] myYearsStats;
 	delete[] rn;
 

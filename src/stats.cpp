@@ -94,9 +94,8 @@ void fillStats(Stats *estado, int &qtd_muni, char const *source )
 				estado[i].nascimentos[j] = myStoi(fromData);
 			}
 
-//T			// Armazena total de nascimentos no perido 
+			// Descarta ultima coluna relativa ao total de nascimentos no perido 
 			getline(inData, fromData);
-			estado[i].total = myStoi(fromData);
 		}
 
 		// Fecha a stream.
@@ -126,7 +125,4 @@ void printStats( Stats const &municipio )
 	for (int ano = 1994; ano <= 2014; ++ano) {
 		cout << "(" << ano << ": " << municipio.nascimentos[ano-1994] << ")" << " ";
 	}
-
-//T	// Imprime total de nascimentos.
-	cout << endl <<"TOTAL: " << municipio.total;
 }
