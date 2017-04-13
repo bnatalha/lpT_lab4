@@ -19,7 +19,7 @@ val:
 #
 #
 #gerar executaveis
-bin/nascimentos: bin/nascimentos.o bin/stats.o bin/mystoi.o
+bin/nascimentos: bin/nascimentos.o bin/stats.o bin/mystoi.o bin/calc.o
 	g++ $^ -o $@
 
 #gerar objetos
@@ -30,6 +30,9 @@ bin/stats.o: src/stats.cpp
 	g++ $(CPPFLAGS) $< $(INC) -c -o $@
 
 bin/mystoi.o: src/mystoi.cpp
+	g++ $(CPPFLAGS) $< $(INC) -c -o $@
+
+bin/calc.o: src/calc.cpp
 	g++ $(CPPFLAGS) $< $(INC) -c -o $@
 
 #remover .o's

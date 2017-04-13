@@ -80,13 +80,11 @@ void fillStats(Stats *estado, int &qtd_muni, char const *source )
 			inData.ignore(1);
 			getline(inData, fromData, ' ');
 			estado[i].codigo = fromData;
-			fromData = "";	//necessario ja que getline concatena a string utilizada.
-
+			
 			//inData.ignore(1, '"');
 			// Armazena nome da cidade
 			getline(inData, fromData, '\"');
 			estado[i].nome = fromData;
-			fromData = "";
 
 			//inData.ignore(';');
 			// Armazena nascimentos da cidade
@@ -94,13 +92,11 @@ void fillStats(Stats *estado, int &qtd_muni, char const *source )
 			for (int j = 0; j < 21; ++j){
 				getline(inData, fromData, ';');
 				estado[i].nascimentos[j] = myStoi(fromData);
-				fromData = "";
 			}
 
 //T			// Armazena total de nascimentos no perido 
 			getline(inData, fromData);
 			estado[i].total = myStoi(fromData);
-			fromData = "";
 		}
 
 		// Fecha a stream.
