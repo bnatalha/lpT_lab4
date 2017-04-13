@@ -63,10 +63,6 @@ double growth_rate(
 	
 	for (int muni = 0; muni < vSize; ++muni)
 	{
-		/*for (int ano = begin_year; ano <= end_year; ++ano)
-		{
-			growthRate += vStats[muni].nascimentos[ano-1994];
-		}*/
 
 		muniGrowthRate = 
 			static_cast<double>( vStats[muni].nascimentos[end_year-1994] ) 	/
