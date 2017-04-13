@@ -32,7 +32,7 @@ int main(int argc, char const *argv[])
 	(v) o número total de nascimentos em cada ano.
 	--
 	saida
-	statisticas.csv
+	estatisticas.csv
 	totais.dat
 	histograma.gnuplot
 	--
@@ -61,7 +61,7 @@ int main(int argc, char const *argv[])
 		myYearsStats[i].maior_n = year_peaks( rn, rn_cities_t, i, Maior);
 		myYearsStats[i].menor_n = year_peaks( rn, rn_cities_t, i, Menor);
 	}
-
+/*
 	// Imprimi valores das estatiscas dos anos no terminal
 	cout << "Ano  |     total|     media|     desvp|     maior|     menor|" << endl;
 	for (int i = 0; i < 21; ++i)
@@ -69,6 +69,12 @@ int main(int argc, char const *argv[])
 		printYearStats(myYearsStats[i]);
 		cout << endl;
 	}
+*/
+	// Salva valores de YearStats em 'data/estatisticas.csv'
+	saveYearStats(myYearsStats, "data/estatisticas.csv");
+
+	// Salva valores de YearStats em 'data/totais.dat'
+	saveYearStats(myYearsStats, "data/totais.dat");
 	
 	// Desaloca arrays dinâmicos
 	delete[] myYearsStats;

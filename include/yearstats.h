@@ -21,6 +21,11 @@ struct YearStats {
 	int menor_n;	 /**< Menor numero de nascimentos em um municipio no ano */
 };
 
-void printYearStats( const YearStats &ano );
+void printYearStats( 
+	const YearStats &ano );
+
+void saveYearStats(
+	const YearStats *my_statistcs, 
+	const char *filename);
 
 #endif
