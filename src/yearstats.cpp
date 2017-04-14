@@ -1,5 +1,20 @@
+/**
+* @file 	yearstats.cpp
+* @brief	Onde fica a implementações das funções geram arquivos/imprimem conteudo utilizam a struct YearStats
+* @author	Natália Azevedo de Brito (https://github.com/bnatalha)
+* @since	10/04/2017
+* @date		13/04/2017
+* @sa 	http://www.cplusplus.com/
+*/
+
 #include "yearstats.h"
 
+/**
+* @brief	Função saveYearStats
+* @details	Salva conteudo de 'my_statistcs' em um arquivo .dat ou .csv
+* @param my_statistcs	Ponteiro para um array de YearStats
+* @param filename	Caminho do arquivo a ser gerado por esta função (um .dat ou .csv)
+*/
 void saveYearStats(
 	const YearStats *my_statistcs, 
 	const char *filename)
@@ -56,7 +71,11 @@ void saveYearStats(
 }
 
 
-// ano | total_n | media_n | desvp_n | maior_n | menor_n
+/**
+* @brief	Função printYearStats
+* @details	Imprime no terminal rganizadamente o conteúdo de um YearStats
+* @param ano	Ponteiro para um YearStats
+*/
 void printYearStats( const YearStats &ano )
 {
 	int am = cout.width() ;

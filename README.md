@@ -1,10 +1,26 @@
 ##Laboratório 4
 # Natália Azevedo de Brito
 
+Compilando:
+	certifique-se de que existe a pasta bin/ no mesmo diretorio onde o Makefil se encontra.
+	$ make
 
--comentar com /**< em variaveis locais
--checar referencia de fillStats em stats.cpp
--Mossor? (não imprime caracteres exclusivos do teclado pt-br)
--maior e menor saind por ultimo no .csv
--sem totais no .csv
--construros de Struct do subilme bugou ( dizia não encontrar initializer antes do 'struct')
+Gerando Documentação:
+	se encontra em docs/
+	$ make doc
+
+
+
+
+Executando:
+	$ bin/nascimentos data/Nascimentos_RN.csv
+
+gnuplot EXTRA:
+	 na pasta data/:
+	$ gnuplot -e "filename='extra.dat'" extra.gnuplot
+
+todos arquivos gerados .dat e .csv, alem dos gráficos e scripts do gnuplot em data/.
+
+
+-não imprime caracteres exclusivos do teclado pt-br
+-não sei se os dados das plotagens da tarefa extra estão corretos..

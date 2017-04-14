@@ -1,6 +1,22 @@
+/**
+* @file 	GrowRateStats.cpp
+* @brief	Onde fica a implementações das funções que utilizam a struct GrowRate.
+* @author	Natália Azevedo de Brito (https://github.com/bnatalha)
+* @since	10/04/2017
+* @date		13/04/2017
+* @sa 	http://www.cplusplus.com/
+*/
+
 #include "GrowRateStats.h"
 
-// versao template colocando alloc de tudo aqui.
+/**
+* @brief	Função allocStruct
+* @details	Conta a quantidade de códigos do arquivo 'alvos.dat' e aloca o vetor myGrowthRates
+* 			de acordo com a contagem.
+* @param myGrowthRates	Ponteiro para um array de GrowRate
+* @param size	Referência para uma variavel onde o tamanho de GrowRate vai ser armazenado
+* @param source	Array de char com o nome do caminho para o arquivo .dat de onde será obtido os dados
+*/
 void allocStruct( 
 	GrowRate **myGrowthRates, 
 	int &size, 
@@ -16,6 +32,7 @@ void allocStruct(
 	// Conta quantos '\n' existem no arquivo se a stream foi aberta com sucesso.
 	if(inData.is_open())
 	{
+		// Conta a quantidade de '\n'
 		for ( ; getline (inData, fromData ); ++new_line_char);
 
 		// Atribuindo tamanho do vetor.
@@ -36,6 +53,14 @@ void allocStruct(
 	}
 }
 
+
+/**
+* @brief	Função readTarget
+* @details	Armazena os códigos do arquivo 'alvos.dat' no vetor myGrowthRates
+* @param myGrowthRates	Array de GrowRate
+* @param size	Referência para uma variavel com o tamanho de GrowRate
+* @param source	Array de char com o nome do caminho para o arquivo .dat de onde será obtido os dados
+*/
 void readTarget( 
 	GrowRate *myGrowthRates, 
 	int &size, 
@@ -66,7 +91,15 @@ void readTarget(
 	}
 }
 
-
+/**
+* @brief	Função calcRate
+* @details	Calcula as taxas de crescimento dos municípios entre 1995 - 2014 e armazena em myGrowthRates,
+*			além de armazenar o nome dos respectivos municipios ( tudo co código destes )
+* @param myGrowthRates	Ponteiro para um array de GrowRate
+* @param size	Referência para uma variavel onde o tamanho de myGrowthRates vai ser armazenado
+* @param estado	Array de Stats com os dados dos municípios
+* @param qtd_muni	Referência para o tamanho de 'estado'
+*/
 void calcRate( 
 	GrowRate *myGrowthRates, 
 	const int &size, 
@@ -90,14 +123,21 @@ void calcRate(
 					myGrowthRates[j].taxa[k] = 100.00* ( 
 						(static_cast<double>( estado[i].nascimentos[k+1] ) 	/
 						estado[i].nascimentos[k] ) - 1 );
-					
-					// cout << std::setprecision(4) << myGrowthRates[j].taxa[k] << " ";
 				}
 			}
 		}		
 	}
 }
 
+
+/**
+* @brief	Função saveExtra
+* @details	Gera o arquivo 'extra.dat' onde é armazenado os dados de myGrowthRates ao longo da execução
+*			desta função
+* @param myGrowthRates	Ponteiro para um array de GrowRate
+* @param size	Referência para uma variavel onde o tamanho de myGrowthRates vai ser armazenado
+* @param filename Array de char com o nome do caminho para o arquivo .dat a ser gerado
+*/
 void saveExtra( 
 	const GrowRate *myGrowthRates,
 	const int &size, 
@@ -121,19 +161,35 @@ void saveExtra(
 		// Labels das ordenadas
 		for (int i = 0; i < size; ++i)
 		{
-			// Salvando no formato necessários para arquivos .dat
-			outData << myGrowthRates[i].nome << " ";
+			// Cria stringstream com nome da cidade
+			std::stringstream NoSpace(myGrowthRates[i].nome);
+
+			// Tira espaço para usar um nome inteiro de label no gnuplot
+			string a;
+			while(getline(NoSpace, a, ' ') ){
+				outData << a;
+			}
+
+			// Separando os nomes das cidades
+			outData << " ";
 		}
 
+		// Fim da primeira linha
 		outData << endl;
 
-		// pontos	
+		// Taxas que seram usadas pelo gnuplot
 		for (int i = 0; i < 20; ++i)
 		{
+			// Ano analisado na linha
+			outData << i+1995 << " ";
+
 			for (int j = 0; j < size; ++j)
 			{
+				// Armazena dados referente a um ano de todas as cidades em uma linha 
 				outData << myGrowthRates[j].taxa[i] << " ";
 			}
+
+			// Fim da linha
 			outData << endl;
 
 		}

@@ -1,3 +1,12 @@
+/**
+* @file		mystoi.h
+* @brief	Onde fica as funções mystoi e myTo_String
+* @author 	Natália Azevedo de Brito (https://github.com/bnatalha)
+* @since	10/04/2017
+* @date		13/04/2017
+* @sa 		http://www.cplusplus.com/
+*/
+
 #ifndef MYSTOI_H
 #define MYSTOI_H
 
@@ -7,7 +16,7 @@
 * @brief   Função myStoi
 * @detail  Similar a std::stoi encontrada na libraria de C, converte
 * 		   's' interpretando seu conteudo como um número inteiro, retornando um valor int.
-		   (std::stoi não estava sendo reconhecide por algum motivo(será que é por causa do -pedantic?))
+		   (std::stoi não estava sendo reconhecide por algum motivo)
 * @param &s referência a string s.
 */
 template <typename T>
@@ -22,6 +31,13 @@ T myStoi (string &s)
 }
 //por alguma razão não compilava std::stoi
 
+/**
+* @brief   Função myTo_String
+* @detail  Similar a std::to_string encontrada na libraria de C, converte
+* 		   'x' retornando seu conteudo em forma de string.
+*		   (std::to_sting não estava sendo reconhecide por algum motivo)
+* @param &x referência a variável do tipo T.
+*/
 template <typename T>
 string myTo_String (T &x)
 {

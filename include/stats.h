@@ -1,3 +1,12 @@
+/**
+* @file		stats.h
+* @brief	Onde fica a struct Stats e suas funções.
+* @author 	Natália Azevedo de Brito (https://github.com/bnatalha)
+* @since	10/04/2017
+* @date		13/04/2017
+* @sa 		http://www.cplusplus.com/
+*/
+
 #ifndef STATS_H
 #define STATS_H
 

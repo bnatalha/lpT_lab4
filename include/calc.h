@@ -1,3 +1,12 @@
+/**
+* @file	calc.h
+* @brief	Onde fica a enum operations_t e funções que calculam dados para Stats
+* @author  Natália Azevedo de Brito (https://github.com/bnatalha)
+* @since	10/04/2017
+* @date	13/04/2017
+* @sa 		http://www.cplusplus.com/
+*/
+
 #ifndef CALC_H
 #define CALC_H
 
@@ -6,6 +15,10 @@
 #include "stats.h"
 #include "yearstats.h"
 
+/**
+* @enum 	operations_t calc.h
+* @brief	Menor é '-1' e Maior é '1'. Usada junto ao myCompare.
+*/
 enum operations_t {
 	Menor = -1,
 	Maior =  1
