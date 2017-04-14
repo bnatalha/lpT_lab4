@@ -11,7 +11,7 @@
 
 /**
 * @brief  Função allocStats
-* @detail Aloca o vetor 'estado'
+* @detail Aloca o vetor 'estado'.
 * @param estado ponteiro para um vetor de Stats
 * @param qtd_muni referência para onde vai ser armazenado o tamanho do vetor
 * @param source ponteiro para um vetor de char com o nome do arquivo a ser lido
