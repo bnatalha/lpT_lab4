@@ -1,25 +1,28 @@
-### Laboratório 4
+## Laboratório 4
 ###### por [Natália Azevedo de Brito](https://github.com/bnatalha)
 
 ---
 
-#### Compilando:
+### Compilando:
 
 **Certifique-se** de que existe a pasta `bin/` no mesmo diretorio onde o _Makefile_ se encontra.
+
 `$ make`
 
-#### Gerando Documentação:
+### Gerando Documentação:
 
 Documentação em _.html_ será gerada em `docs/`
+
 `$ make doc`
 
-#### Executando:
+### Executando:
 
 `$ bin/nascimentos data/Nascimentos_RN.csv`
 
-#### gnuplot EXTRA:
+### gnuplot EXTRA:
 
 **Certifique-se** de estar no diretório `data/`.
+
 `$ gnuplot -e "filename='extra.dat'" extra.gnuplot`
 
 ---
