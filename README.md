@@ -1,26 +1,27 @@
-##Laboratório 4
-# Natália Azevedo de Brito
+# Laboratório 4
+###### por [Natália Azevedo de Brito](https://github.com/bnatalha)
 
 Compilando:
-	certifique-se de que existe a pasta bin/ no mesmo diretorio onde o Makefil se encontra.
-	$ make
+===============
+##### *Certifique-se* de que existe a pasta `bin/` no mesmo diretorio onde o _Makefile_ se encontra.
+`$ make`
 
 Gerando Documentação:
-	se encontra em docs/
-	$ make doc
-
-
-
+=====================
+##### Documentação em _.html_ será gerada em `docs/`
+$ make doc
 
 Executando:
-	$ bin/nascimentos data/Nascimentos_RN.csv
+===========
+`$ bin/nascimentos data/Nascimentos_RN.csv`
 
 gnuplot EXTRA:
-	 na pasta data/:
-	$ gnuplot -e "filename='extra.dat'" extra.gnuplot
+--------------
+##### *Certifique-se* de estar no diretório `data/`:
+`$ gnuplot -e "filename='extra.dat'" extra.gnuplot`
 
-todos arquivos gerados .dat e .csv, alem dos gráficos e scripts do gnuplot em data/.
+---
 
+Todos arquivos gerados ( _.dat_ e _.csv_, gráficos ) e _scripts_ do gnuplot estarão em [data/](../lpt_lab4/master/data/).
 
--não imprime caracteres exclusivos do teclado pt-br
--não sei se os dados das plotagens da tarefa extra estão corretos..
+###### Obs: Não imprime caracteres exclusivos do teclado pt-br
